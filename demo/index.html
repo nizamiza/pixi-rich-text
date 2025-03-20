@@ -106,14 +106,17 @@ and <ms>multistyle</ms> text for
             const url = "100.png";
 
             const imgText = `<h2>Inline Images!</h2>
-
 <img imgSrc="doot" imgDisplay="inline" /> <img imgSrc="thinking" imgDisplay="inline" />
-
 Make it an icon <thinking imgDisplay="icon" /> with <code>imgDisplay="icon"</code>!
-
 Control the icon size with <code>iconScale=</code> <thinking imgDisplay="icon" /><thinking imgDisplay="icon" iconScale="1.5" /><thinking imgDisplay="icon" iconScale="2" /><thinking imgDisplay="icon" iconScale="1.5" /><thinking imgDisplay="icon" />
-
 You can even load images from a URL <url /> (if you can figure out the CORS stuff!)`;
+
+            const imgText2 = `<h2>Inline Images (Updated)!</h2>
+<img imgSrc="doot" imgDisplay="inline" /> <img imgSrc="thinking" imgDisplay="inline" />
+Make it an icon with more updated text <thinking imgDisplay="icon" /> with <code>imgDisplay="icon"</code>! This text is also updated!
+Control the icon size with <code>iconScale=</code> <thinking imgDisplay="icon" /><thinking imgDisplay="icon" iconScale="1.5" /><thinking imgDisplay="icon" iconScale="2" /><thinking imgDisplay="icon" iconScale="1.5" /><thinking imgDisplay="icon" />
+You can even load images from a URL <url /> (if you can figure out the CORS stuff!) (some numbers at the end: 31562)`;
+
             const imgStyle = {
               default: {
                 fontFamily: "Arial",
@@ -147,6 +150,16 @@ You can even load images from a URL <url /> (if you can figure out the CORS stuf
             });
 
             const imgApp = createDemo("img", imgTaggedText);
+  
+            let currentTextIndex = 0;
+            const textOptions = [imgText, imgText2];
+
+            document.addEventListener('keydown', (event) => {
+              if (event.code === 'KeyR') {
+                currentTextIndex = (currentTextIndex + 1) % textOptions.length;
+                imgTaggedText.setText(textOptions[currentTextIndex]);
+              }
+            });
           </script>
         </div>
       </div>

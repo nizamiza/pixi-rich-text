@@ -1,0 +1,24 @@
+[[language]]
+name = "javascript"
+indent = { tab-width = 4, unit = "\t" }
+language-servers = [{ name = "typescript-language-server" }]
+
+[[language]]
+name = "typescript"
+indent = { tab-width = 4, unit = "\t" }
+language-servers = [{ name = "typescript-language-server" }]
+
+[[language]]
+name = "json"
+indent = { tab-width = 4, unit = "\t" }
+language-servers = [{ name = "vscode-json-language-server" }]
+
+[[language]]
+name = "css"
+indent = { tab-width = 4, unit = "\t" }
+language-servers = [{ name = "vscode-css-language-server" }]
+
+[[language]]
+name = "html"
+indent = { tab-width = 4, unit = "\t" }
+language-servers = [{ name = "vscode-html-language-server" }]

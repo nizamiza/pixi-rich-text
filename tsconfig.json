@@ -12,10 +12,17 @@
     "outDir": "dist",
     "declaration": true,
     "pretty": true,
-    "lib": ["ES2021", "DOM"],
-    "esModuleInterop": true,
+    "lib": [
+      "ES2021",
+      "DOM"
+    ],
+    "esModuleInterop": true
   },
-  "exclude": ["node_modules", "dist", "bower_components"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "bower_components"
+  ],
   "compileOnSave": true,
-  "baseUrl": ".",
+  "baseUrl": "."
 }

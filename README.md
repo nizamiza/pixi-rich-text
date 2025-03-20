@@ -1,4 +1,7 @@
-# pixi-tagged-text
+# pixi-rich-text
+
+> This is a fork of the original [`pixi-taggex-text`](https://github.com/mimshwright/pixi-tagged-text) library with a memory leak fix and
+> some other feature changes.
 
 [![NPM](https://nodei.co/npm/pixi-tagged-text.png)](https://nodei.co/npm/pixi-tagged-text/)
 

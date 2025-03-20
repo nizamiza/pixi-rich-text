@@ -6,14 +6,14 @@ import { Nested } from "./types";
 type Predicate<T> = (t: T) => boolean;
 
 export const combineRecords = <
-  A extends Record<string, unknown>,
-  B extends Record<string, unknown> = A,
+    A extends Record<string, unknown>,
+    B extends Record<string, unknown> = A,
 >(
-  a: A,
-  b: B
+    a: A,
+    b: B
 ): A & B => ({
-  ...a,
-  ...b,
+    ...a,
+    ...b,
 });
 
 /**
@@ -29,31 +29,31 @@ export const first = <T>(a: T[]): T => a[0];
 export const last = <T>(a: T[]): T => a[a.length - 1];
 
 export const isDefined: Predicate<unknown | undefined> = (a): boolean =>
-  a !== undefined;
+    a !== undefined;
 
 /**
  * Predicate p => p -> p
  */
 export const complement =
-  <T>(predicate: Predicate<T>) =>
-  (input: T): boolean =>
-    !predicate(input);
+    <T>(predicate: Predicate<T>) =>
+        (input: T): boolean =>
+            !predicate(input);
 
 /**
  * List f => string -> f {string: a} -> f a
  */
 export const pluck =
-  <T, U>(key: keyof U) =>
-  (objects: U[]): T[] =>
-    (objects as (U & Record<string, T>)[]).map<T>((o) => o[key]);
+    <T, U>(key: keyof U) =>
+        (objects: U[]): T[] =>
+            (objects as (U & Record<string, T>)[]).map<T>((o) => o[key]);
 
 export const assoc =
-  <T extends Record<string, U>, U>(key: keyof T) =>
-  (value: U) =>
-  (object: T): T => ({
-    ...object,
-    ...{ [key]: value },
-  });
+    <T extends Record<string, U>, U>(key: keyof T) =>
+        (value: U) =>
+            (object: T): T => ({
+                ...object,
+                ...{ [key]: value },
+            });
 
 /**
  * Takes a key (k), a function (f) and an object (o) and applies f to the property k
@@ -61,28 +61,28 @@ export const assoc =
  * Key k, Record r => k -> (a -> a) -> r k a -> r k a
  */
 export const mapProp =
-  <T, U>(k: keyof U) =>
-  (f: (t: T) => T) =>
-  (o: U): U => ({
-    ...o,
-    [k]: f((o as U & Record<string, T>)[k]),
-  });
+    <T, U>(k: keyof U) =>
+        (f: (t: T) => T) =>
+            (o: U): U => ({
+                ...o,
+                [k]: f((o as U & Record<string, T>)[k]),
+            });
 
 export const flatReduce =
-  <T, U>(f: (acc: U, t: T) => U, acc: U) =>
-  (nested: Nested<T>): U =>
-    // @ts-ignore-next-line
-    [nested].flat(255).reduce(f, acc);
+    <T, U>(f: (acc: U, t: T) => U, acc: U) =>
+        (nested: Nested<T>): U =>
+            // @ts-ignore-next-line
+            [nested].flat(255).reduce(f, acc);
 
 type FlatReduceRetrun<T, U> = (nested: Nested<T>) => U;
 
 export const flatEvery = <T>(p: Predicate<T>): FlatReduceRetrun<T, boolean> =>
-  flatReduce<T, boolean>((acc: boolean, t: T) => acc && p(t), true);
+    flatReduce<T, boolean>((acc: boolean, t: T) => acc && p(t), true);
 
 export const nestedMap =
-  <T, U>(f: (t: T) => U) =>
-  (nested: Nested<T>): Nested<U> =>
-    nested instanceof Array ? nested.map(nestedMap(f)) : f(nested);
+    <T, U>(f: (t: T) => U) =>
+        (nested: Nested<T>): Nested<U> =>
+            nested instanceof Array ? nested.map(nestedMap(f)) : f(nested);
 
 /**
  * Takes a list and a predicate and returns a number that represents the number of
@@ -91,8 +91,8 @@ export const nestedMap =
  * (a -> boolean) -> a[] -> number
  */
 export const countIf =
-  <T>(p: Predicate<T>) =>
-  (a: Array<T>): number =>
-    a.reduce((count, item) => (p(item) ? count + 1 : count), 0);
+    <T>(p: Predicate<T>) =>
+        (a: Array<T>): number =>
+            a.reduce((count, item) => (p(item) ? count + 1 : count), 0);
 
 export type Unary<Param, Return> = (p: Param) => Return;

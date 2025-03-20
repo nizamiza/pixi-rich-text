@@ -6,12 +6,12 @@ import { logWarning } from "./errorMessaging";
 ///// GENERAL PURPOSE
 
 export type Point = {
-  x: number;
-  y: number;
+    x: number;
+    y: number;
 };
 export type Rectangle = Point & {
-  width: number;
-  height: number;
+    width: number;
+    height: number;
 };
 
 export type Bounds = Rectangle;
@@ -23,31 +23,31 @@ export type PixiTextTypes = PIXI.Text | PIXI.BitmapText;
 ///// OPTIONS
 
 export type SpriteSource =
-  | string
-  | PIXI.Texture
-  | HTMLCanvasElement
-  | HTMLVideoElement;
+    | string
+    | PIXI.Texture
+    | HTMLCanvasElement
+    | HTMLVideoElement;
 
 export type TextureSource =
-  | string
-  | HTMLImageElement
-  | HTMLCanvasElement
-  | HTMLVideoElement
-  | PIXI.BaseTexture;
+    | string
+    | HTMLImageElement
+    | HTMLCanvasElement
+    | HTMLVideoElement
+    | PIXI.BaseTexture;
 
 export type ImageSource = PIXI.Sprite | SpriteSource | TextureSource;
 
 export const isSpriteSource = (s: ImageSource): s is SpriteSource =>
-  typeof s === "string" ||
-  s instanceof PIXI.Texture ||
-  s instanceof HTMLCanvasElement ||
-  s instanceof HTMLVideoElement;
+    typeof s === "string" ||
+    s instanceof PIXI.Texture ||
+    s instanceof HTMLCanvasElement ||
+    s instanceof HTMLVideoElement;
 export const isBaseTexture = (s: ImageSource): s is PIXI.BaseTexture =>
-  s instanceof PIXI.BaseTexture;
+    s instanceof PIXI.BaseTexture;
 export const isImageElement = (s: ImageSource): s is HTMLImageElement =>
-  s instanceof HTMLImageElement;
+    s instanceof HTMLImageElement;
 export const isTextureSource = (s: ImageSource): s is TextureSource =>
-  isImageElement(s) || isBaseTexture(s);
+    isImageElement(s) || isBaseTexture(s);
 
 export type FontProperty = string | number;
 export type FontMap = Record<string, FontProperty>;
@@ -59,33 +59,33 @@ export type SplitStyle = "words" | "characters";
 
 export type ErrorMessageType = "warning" | "error";
 export interface ErrorMessage {
-  type: ErrorMessageType;
-  code: string;
-  message: string;
-  target?: TaggedText;
+    type: ErrorMessageType;
+    code: string;
+    message: string;
+    target?: TaggedText;
 }
 export type ErrorHandler = (e: ErrorMessage) => void;
 
 export interface IFontMetrics {
-  ascent: number;
-  descent: number;
-  fontSize: number;
+    ascent: number;
+    descent: number;
+    fontSize: number;
 }
 
 export interface TaggedTextOptions {
-  debug?: boolean;
-  debugConsole?: boolean;
-  splitStyle?: SplitStyle;
-  adjustFontBaseline?: FontMap;
-  imgMap?: ImageSourceMap;
-  scaleIcons?: boolean;
-  skipUpdates?: boolean;
-  skipDraw?: boolean;
-  drawWhitespace?: boolean;
-  wrapEmoji?: boolean;
-  errorHandler?: ErrorHandler;
-  supressConsole?: boolean;
-  overdrawDecorations?: number;
+    debug?: boolean;
+    debugConsole?: boolean;
+    splitStyle?: SplitStyle;
+    adjustFontBaseline?: FontMap;
+    imgMap?: ImageSourceMap;
+    scaleIcons?: boolean;
+    skipUpdates?: boolean;
+    skipDraw?: boolean;
+    drawWhitespace?: boolean;
+    wrapEmoji?: boolean;
+    errorHandler?: ErrorHandler;
+    supressConsole?: boolean;
+    overdrawDecorations?: number;
 }
 
 ///// STYLE PROPERTIES
@@ -96,26 +96,26 @@ export const IMG_DISPLAY_PROPERTY = "imgDisplay";
 export const DEFAULT_KEY = "default";
 
 export enum MeasurementUnit {
-  default = "px",
-  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
-  px = "px",
-  em = "em",
-  rem = "rem",
-  pt = "pt",
-  pc = "pc",
-  in = "in",
-  cm = "cm",
-  mm = "mm",
-  percent = "%",
-  unknown = "unknown",
+    default = "px",
+    // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
+    px = "px",
+    em = "em",
+    rem = "rem",
+    pt = "pt",
+    pc = "pc",
+    in = "in",
+    cm = "cm",
+    mm = "mm",
+    percent = "%",
+    unknown = "unknown",
 }
 
 export const DEFAULT_MEASUREMENT_UNIT: MeasurementUnit =
-  MeasurementUnit.default;
+    MeasurementUnit.default;
 
 export interface MeasurementComponents {
-  value: number;
-  unit: MeasurementUnit;
+    value: number;
+    unit: MeasurementUnit;
 }
 
 export type MeasurementValue = string | number;
@@ -127,12 +127,12 @@ export type Fill = Color | string[] | number[] | CanvasGradient | CanvasPattern;
 export type VAlign = "top" | "middle" | "bottom" | "baseline" | number;
 export type AlignClassic = "left" | "right" | "center" | "justify";
 export type Align =
-  | AlignClassic
-  | "justify"
-  | "justify-left"
-  | "justify-right"
-  | "justify-center"
-  | "justify-all";
+    | AlignClassic
+    | "justify"
+    | "justify-left"
+    | "justify-right"
+    | "justify-center"
+    | "justify-all";
 export type ImageDisplayMode = "icon" | "block" | "inline";
 export type ImageReference = string;
 export type ImageDimensionPercentage = string;
@@ -141,69 +141,69 @@ export type TextTransform = "normal" | "capitalize" | "uppercase" | "lowercase";
 export type FontStyle = "normal" | "italic" | "oblique";
 export type TextDecorationValue = "underline" | "overline" | "line-through";
 export type TextDecoration =
-  | "normal"
-  | "none"
-  | TextDecorationValue
-  | `${TextDecorationValue} ${TextDecorationValue}`
-  | `${TextDecorationValue} ${TextDecorationValue} ${TextDecorationValue}`;
+    | "normal"
+    | "none"
+    | TextDecorationValue
+    | `${TextDecorationValue} ${TextDecorationValue}`
+    | `${TextDecorationValue} ${TextDecorationValue} ${TextDecorationValue}`;
 
 export interface ImageStyles {
-  [IMG_REFERENCE_PROPERTY]?: ImageReference;
-  [IMG_DISPLAY_PROPERTY]?: ImageDisplayMode;
-  imgScale?: ImageDimensionPercentage;
-  imgScaleX?: ImageDimensionPercentage;
-  imgScaleY?: ImageDimensionPercentage;
-  imgWidth?: ImageDimension;
-  imgHeight?: ImageDimension;
-  iconScale?: number;
+    [IMG_REFERENCE_PROPERTY]?: ImageReference;
+    [IMG_DISPLAY_PROPERTY]?: ImageDisplayMode;
+    imgScale?: ImageDimensionPercentage;
+    imgScaleX?: ImageDimensionPercentage;
+    imgScaleY?: ImageDimensionPercentage;
+    imgWidth?: ImageDimension;
+    imgHeight?: ImageDimension;
+    iconScale?: number;
 }
 
 export interface UnderlineStyle {
-  underlineColor?: Color;
-  underlineThickness?: Thickness;
-  underlineOffset?: number;
+    underlineColor?: Color;
+    underlineThickness?: Thickness;
+    underlineOffset?: number;
 }
 export interface OverlineStyle {
-  overlineColor?: Color;
-  overlineThickness?: Thickness;
-  overlineOffset?: number;
+    overlineColor?: Color;
+    overlineThickness?: Thickness;
+    overlineOffset?: number;
 }
 export interface LineThroughStyle {
-  lineThroughColor?: Color;
-  lineThroughThickness?: Thickness;
-  lineThroughOffset?: number;
+    lineThroughColor?: Color;
+    lineThroughThickness?: Thickness;
+    lineThroughOffset?: number;
 }
 
 export interface TextDecorationStyles
-  extends UnderlineStyle,
+    extends UnderlineStyle,
     OverlineStyle,
     LineThroughStyle {
-  textDecoration?: TextDecoration;
+    textDecoration?: TextDecoration;
 }
 
 export interface VerticalAlignStyles {
-  valign?: VAlign;
+    valign?: VAlign;
 }
 
 export interface VerticalSpacingStyles {
-  lineSpacing?: number;
-  paragraphSpacing?: number;
-  adjustBaseline?: number;
+    lineSpacing?: number;
+    paragraphSpacing?: number;
+    adjustBaseline?: number;
 }
 export interface FontScaleStyles {
-  fontScaleWidth?: number;
-  fontScaleHeight?: number;
+    fontScaleWidth?: number;
+    fontScaleHeight?: number;
 }
 export interface TextTransformStyles {
-  textTransform?: TextTransform;
+    textTransform?: TextTransform;
 }
 
 export interface LineBreakStyles {
-  breakLines?: boolean;
+    breakLines?: boolean;
 }
 
 export interface TextStyleExtended
-  extends Record<string, unknown>,
+    extends Record<string, unknown>,
     Partial<Omit<Omit<PIXI.IBitmapTextStyle, "align">, "fontSize">>,
     Partial<Omit<PIXI.ITextStyle, "align">>,
     ImageStyles,
@@ -213,17 +213,17 @@ export interface TextStyleExtended
     FontScaleStyles,
     TextTransformStyles,
     LineBreakStyles {
-  // Overridden properties
-  align?: Align;
-  fontStyle?: FontStyle;
-  fontSize?: FontSize;
-  // alias for `fill`
-  color?: PIXI.TextStyleFill;
+    // Overridden properties
+    align?: Align;
+    fontStyle?: FontStyle;
+    fontSize?: FontSize;
+    // alias for `fill`
+    color?: PIXI.TextStyleFill;
 }
 
 export interface TextDecorationMetrics {
-  color: Color;
-  bounds: Bounds;
+    color: Color;
+    bounds: Bounds;
 }
 
 export type TextStyleSet = Record<string, TextStyleExtended>;
@@ -235,14 +235,14 @@ type AttributeName = string;
 type AttributeValue = string | number;
 export type AttributesList = Record<AttributeName, AttributeValue>;
 export interface TagWithAttributes {
-  tagName: string;
-  attributes: AttributesList;
+    tagName: string;
+    attributes: AttributesList;
 }
 
 export interface TagMatchData extends TagWithAttributes {
-  tag: string;
-  isOpening: boolean;
-  index: number;
+    tag: string;
+    isOpening: boolean;
+    index: number;
 }
 export type TagStack = TagMatchData[];
 
@@ -254,22 +254,22 @@ export type TextToken = string;
 export type SpriteToken = PIXI.Sprite;
 
 export interface CompositeToken<T extends Token = Token> {
-  children: T[];
+    children: T[];
 }
 
 export type Token = TextToken | CompositeToken | SpriteToken;
 export type Tokens = CompositeToken;
 
 export interface TagToken extends CompositeToken<TagToken | TextToken> {
-  tag?: TagName;
-  attributes?: AttributesList;
+    tag?: TagName;
+    attributes?: AttributesList;
 }
 export type TagTokens = TagToken;
 
 export interface StyledToken
-  extends CompositeToken<StyledToken | TextToken | SpriteToken> {
-  style: TextStyleExtended;
-  tags: string;
+    extends CompositeToken<StyledToken | TextToken | SpriteToken> {
+    style: TextStyleExtended;
+    tags: string;
 }
 
 export type StyledTokens = StyledToken;
@@ -298,69 +298,69 @@ export type StyledTokens = StyledToken;
 
 export type SegmentContent = TextToken | SpriteToken;
 export interface SegmentToken {
-  content: SegmentContent;
-  bounds: Rectangle;
-  fontProperties: IFontMetrics;
-  style: TextStyleExtended;
-  tags: string;
-  textDecorations?: TextDecorationMetrics[];
+    content: SegmentContent;
+    bounds: Rectangle;
+    fontProperties: IFontMetrics;
+    style: TextStyleExtended;
+    tags: string;
+    textDecorations?: TextDecorationMetrics[];
 }
 export type WordToken = SegmentToken[];
 export type LineToken = WordToken[];
 export type ParagraphToken = LineToken[];
 
 export const createEmptySegmentToken = (): SegmentToken => ({
-  content: "",
-  bounds: new PIXI.Rectangle(),
-  fontProperties: { ascent: 0, descent: 0, fontSize: 0 },
-  style: {},
-  tags: "",
-  textDecorations: [],
+    content: "",
+    bounds: new PIXI.Rectangle(),
+    fontProperties: { ascent: 0, descent: 0, fontSize: 0 },
+    style: {},
+    tags: "",
+    textDecorations: [],
 });
 
 export interface SpriteSegmentToken extends SegmentToken {
-  content: SpriteToken;
+    content: SpriteToken;
 }
 export interface TextSegmentToken extends SegmentToken {
-  content: TextToken;
+    content: TextToken;
 }
 
 export interface WhitespaceSegmentToken extends TextSegmentToken {
-  content: WhitespaceToken;
+    content: WhitespaceToken;
 }
 export interface NewlineSegmentToken extends TextSegmentToken {
-  content: NewlineToken;
+    content: NewlineToken;
 }
 
 export const isWhitespace = (s: string): s is WhitespaceToken =>
-  s !== "" &&
-  s.split("").every((char: string): boolean => char.search(/\s/) === 0);
+    s !== "" &&
+    s.split("").every((char: string): boolean => char.search(/\s/) === 0);
 export const isNewline = (s: string): s is NewlineToken =>
-  isWhitespace(s) && s === "\n";
+    isWhitespace(s) && s === "\n";
 
 export const _isSpriteToken = (t: SegmentToken): t is SpriteSegmentToken =>
-  t.content instanceof PIXI.Sprite;
+    t.content instanceof PIXI.Sprite;
 export const isSpriteToken = flatEvery(_isSpriteToken);
 
 export const _isTextToken = (t: SegmentToken): t is TextSegmentToken =>
-  typeof t.content === "string";
+    typeof t.content === "string";
 export const isTextToken = flatEvery(_isTextToken);
 
 export const _isWhitespaceToken = (
-  t: SegmentToken
+    t: SegmentToken
 ): t is WhitespaceSegmentToken =>
-  t !== undefined && _isTextToken(t) && isWhitespace(t.content);
+    t !== undefined && _isTextToken(t) && isWhitespace(t.content);
 export const isWhitespaceToken = flatEvery(_isWhitespaceToken);
 
 export const _isNewlineToken = (t: SegmentToken): t is NewlineSegmentToken =>
-  t !== undefined && _isTextToken(t) && isNewline(t.content);
+    t !== undefined && _isTextToken(t) && isNewline(t.content);
 export const isNewlineToken = (t?: Nested<SegmentToken>): boolean =>
-  t === undefined ? false : flatEvery(_isNewlineToken)(t);
+    t === undefined ? false : flatEvery(_isNewlineToken)(t);
 
 export const isNotWhitespaceToken = complement(isWhitespaceToken);
 
 export const isEmptyObject = <T>(a: T): boolean =>
-  a instanceof Object && Object.keys(a).length === 0;
+    a instanceof Object && Object.keys(a).length === 0;
 
 export const isPixel = (s: string): boolean => s.trim().endsWith("px");
 
@@ -369,48 +369,48 @@ export const isEm = (s: string): boolean => s.trim().endsWith("em");
 export const isPercent = (s: string): boolean => s.trim().endsWith("%");
 
 export const pixelToNumber = (s: string): number =>
-  Number(s.trim().slice(0, -2));
+    Number(s.trim().slice(0, -2));
 export const emToNumber = pixelToNumber;
 
 export const percentStringToNumber = (s: string): number =>
-  isPercent(s) ? Number(s.trim().slice(0, -1)) / 100 : NaN;
+    isPercent(s) ? Number(s.trim().slice(0, -1)) / 100 : NaN;
 
 export const measurementValueToComponents = (
-  input: MeasurementValue
+    input: MeasurementValue
 ): MeasurementComponents => {
-  if (input === undefined) {
-    throw new Error("value is undefined!");
-  }
-
-  if (typeof input === "number") {
-    return { value: input, unit: DEFAULT_MEASUREMENT_UNIT };
-  }
-  input = input.trim();
-
-  const pattern = new RegExp(Object.values(MeasurementUnit).join("|") + "$");
-  const i = input.search(pattern);
-  if (i !== -1) {
-    return {
-      value: parseFloat(input.slice(0, i)),
-      unit: input.slice(i) as MeasurementUnit,
-    };
-  }
-
-  const isAllDigits = input.search(/^[\d.]+$/) === 0;
-  if (isAllDigits) {
-    const forcedNumberConversion = parseFloat(input);
-    if (isNaN(forcedNumberConversion) === false) {
-      return { value: parseFloat(input), unit: DEFAULT_MEASUREMENT_UNIT };
+    if (input === undefined) {
+        throw new Error("value is undefined!");
     }
-  }
 
-  // TOOD: hook into errorHandler
-  logWarning()(
-    "invalid-units",
-    `${input} is not a valid measurement value. Please use one of the following units: ${Object.keys(
-      MeasurementUnit
-    ).join(", ")}`
-  );
+    if (typeof input === "number") {
+        return { value: input, unit: DEFAULT_MEASUREMENT_UNIT };
+    }
+    input = input.trim();
 
-  return { value: NaN, unit: MeasurementUnit.unknown };
+    const pattern = new RegExp(Object.values(MeasurementUnit).join("|") + "$");
+    const i = input.search(pattern);
+    if (i !== -1) {
+        return {
+            value: parseFloat(input.slice(0, i)),
+            unit: input.slice(i) as MeasurementUnit,
+        };
+    }
+
+    const isAllDigits = input.search(/^[\d.]+$/) === 0;
+    if (isAllDigits) {
+        const forcedNumberConversion = parseFloat(input);
+        if (isNaN(forcedNumberConversion) === false) {
+            return { value: parseFloat(input), unit: DEFAULT_MEASUREMENT_UNIT };
+        }
+    }
+
+    // TOOD: hook into errorHandler
+    logWarning()(
+        "invalid-units",
+        `${input} is not a valid measurement value. Please use one of the following units: ${Object.keys(
+            MeasurementUnit
+        ).join(", ")}`
+    );
+
+    return { value: NaN, unit: MeasurementUnit.unknown };
 };
